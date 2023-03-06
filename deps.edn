@@ -1,0 +1,18 @@
+{:deps {org.clojure/clojure                  {:mvn/version "1.10.3"}
+        io.github.FieryCod/holy-lambda       {:mvn/version "0.6.6"}
+        com.github.clj-easy/graal-build-time {:mvn/version "0.1.4"}
+        io.github.FieryCod/holy-lambda-ring-adapter {:mvn/version "0.1.2"}
+        metosin/reitit {:mvn/version "0.6.0"}
+        metosin/muuntaja {:mvn/version "0.6.8"}
+        ring/ring {:mvn/version "1.9.6"}
+        metosin/ring-http-response {:mvn/version "0.9.3"}}
+
+ :paths   ["src" "resources"]
+
+ :aliases {:uberjar {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.1.303"}}
+                     :exec-fn      hf.depstar/uberjar
+                     :exec-args    {:aot        ["example1.core"]
+                                    :main-class "example1.core"
+                                    :jar        ".holy-lambda/build/output.jar"
+                                    :jvm-opts   ["-Dclojure.compiler.direct-linking=true"
+                                                 "-Dclojure.spec.skip-macros=true"]}}}}
